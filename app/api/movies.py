@@ -15,6 +15,14 @@ def create_movie(movie: MovieCreate, db: Session = Depends(get_db)):
 def list_movies(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
     return crud.get_movies(db, skip, limit)
 
+@router.get("/filmes/{movie_id}", response_model=Movie)
+def get_movie(movie_id: int, db: Session = Depends(get_db)):
+    movie = crud.get_movie_by_id(db, movie_id)
+    if movie:
+        return movie
+    else:
+        raise HTTPException(status_code=404, detail="Movie not found") 
+
 @router.delete("/filmes/{movie_id}", response_model=Movie)
 def delete_movie(movie_id: int, db: Session = Depends(get_db)):
     return crud.delete_movie(db, movie_id)

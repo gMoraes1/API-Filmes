@@ -20,6 +20,9 @@ def create_movie(db: Session, movie: MovieCreate):
 def get_movies(db: Session, skip: int = 0, limit: int = 10):
     return db.query(Movie).offset(skip).limit(limit).all()
 
+def get_movie_by_id(db: Session, movie_id: int):
+    return db.query(Movie).filter(Movie.id == movie_id).first()
+
 def delete_movie(db: Session, movie_id: int):
     db_movie = db.query(Movie).filter(Movie.id == movie_id).first()
     if db_movie:
@@ -27,6 +30,7 @@ def delete_movie(db: Session, movie_id: int):
         db.commit()
         return db_movie
     return None
+
 
 def change_movie(db: Session, movie_id: int, movie_update: MovieCreate):
     db_movie = db.query(Movie).filter(Movie.id == movie_id).first()
