@@ -1,8 +1,9 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from app.db.session import get_db
-from app.schemas.movie import Movie, MovieCreate
+from app.schemas.movie import *
 from app.crud import movies as crud
+from fastapi import HTTPException
 
 router = APIRouter() 
 
@@ -13,3 +14,15 @@ def create_movie(movie: MovieCreate, db: Session = Depends(get_db)):
 @router.get("/filmes/", response_model=list[Movie])
 def list_movies(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
     return crud.get_movies(db, skip, limit)
+
+@router.delete("/filmes/{movie_id}", response_model=Movie)
+def delete_movie(movie_id: int, db: Session = Depends(get_db)):
+    return crud.delete_movie(db, movie_id)
+
+@router.put("/filmes/{movie_id}", response_model=Movie)
+def update_movie(movie_id: int, movie:MovieUpdate, db: Session = Depends(get_db)):
+    updated = crud.change_movie(db, movie_id, movie)
+    if updated:
+        return updated
+    else:
+        raise HTTPException(status_code=404, detail="Movie not found")
