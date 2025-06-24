@@ -3,7 +3,7 @@ from app.api import movies
 from app.db.base import Base
 from app.db.session import engine
 
-app = FastAPI(title="Movies API")
+app = FastAPI(title="Filmes API")
 
 Base.metadata.create_all(bind=engine)
 

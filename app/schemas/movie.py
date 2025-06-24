@@ -13,3 +13,11 @@ class Movie(MovieBase):
 
     class Config:
         from_attributes = True
+
+class MovieUpdate(BaseModel):
+    title: str | None = None
+    director: str | None = None
+    year: int | None = None
+
+    class Config:
+        from_attributes = True
