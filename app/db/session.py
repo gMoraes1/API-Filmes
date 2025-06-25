@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import os   
 load_dotenv()
 
+
 engine = create_engine(
     os.getenv("SQLALCHEMY_DATABASE_URL"), connect_args={"check_same_thread": False}
 )
