@@ -1,23 +1,22 @@
-# API FILMES 🎬 
+# 🎬 API de Filmes
 
-Uma API REST de cadastro de filmes desenvolvida com **FastAPI**, utilizando **SQLAlchemy** para persistência de dados em **SQLite**.
+Uma API REST para cadastro de filmes, desenvolvida com **FastAPI**, utilizando **SQLAlchemy** para persistência de dados em **SQLite**.
 
-Este projeto faz parte de um desafio técnico com o objetivo de implementar um CRUD completo de filmes, expondo uma API REST funcional e bem estruturada.
+Este projeto faz parte de um desafio técnico com o objetivo de implementar um CRUD completo de filmes, expondo uma API REST funcional, organizada e de fácil manutenção.
 
 ---
 
-## 🚀 Tecnologias usadas nesse projeto
+## 🚀 Tecnologias utilizadas
 
-- [Guia sobre ORMs em Python – Real Python](https://realpython.com/python-sql-libraries/#object-relational-mappers-orms)
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [SQLAlchemy](https://www.sqlalchemy.org/)
 - [SQLite](https://www.sqlite.org/)
-- [Docker](https://www.docker.com/)
 - [Pydantic](https://docs.pydantic.dev/)
 - [Uvicorn](https://www.uvicorn.org/)
+- [Docker](https://www.docker.com/)
 
-
-
+📚 **Referência complementar**:  
+[Guia sobre ORMs em Python – Real Python](https://realpython.com/python-sql-libraries/#object-relational-mappers-orms)
 
 ---
 
@@ -31,7 +30,7 @@ Este projeto faz parte de um desafio técnico com o objetivo de implementar um C
 
 ---
 
-## 📦 Estrutura de diretórios
+## 📁 Estrutura de diretórios
 movies-api/
 ├── app/
 │ ├── api/ # Arquivos de rota (endpoints)
@@ -41,7 +40,23 @@ movies-api/
 │ ├── schemas/ # Schemas Pydantic
 │ └── main.py # Ponto de entrada da aplicação
 ├── movies.db # Arquivo SQLite com os dados
-├── requirements.txt # Dependências do projeto
-├── Dockerfile # Containerização
+├── .env # Variavel de conexão com o banco
+├── dockerfile # Containerização
+├── docker-compose.yml
 └── README.md # Este arquivo
-    
+├── requirements.txt # Dependências do projeto    
+
+---
+
+## 🐳 Como rodar com Docker
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/gMoraes1/API-Filmes.git
+cd API-Filmes
+Construa e execute a aplicação com Docker Compose:
+docker compose up 
+A aplicação estará disponível em: http://localhost:8000/docs
+⚠️ Atenção: O arquivo .env foi incluído neste repositório apenas por ser um desafio técnico.
+Nunca suba esse tipo de arquivo em projetos reais, pois ele pode conter informações sensíveis, como senhas e logins.
